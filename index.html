@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn GitHub</title>
+</head>
+
+<body>
+  <h1>clone, modify and push back the repo</h1>
+  <ul>
+    <li>you need to install bash in windows to use git</li>
+    <li>git --version</li>
+    <li>git config --list</li>
+    <li>git config --global user.name "your-name"</li>
+    <li>git config --global user.email "your-name@email.com"</li>
+    <li>git clone {https://github.com/username/git-hub-repo-name.git}</li>
+    <li>git status (run this in cloned repository directory)</li>
+    <li>git add {modifile / new filename}</li>
+    <li>git add . (for staging all files in oneshot)</li>
+    <li>git commit -m "message"</li>
+    <li>git push origin main </li>
+    <li></li>
+  </ul>
+
+  <h1>Creating repo on local machine</h1>
+  <ul>
+    <li>git init</li>
+    <li>create files and commit them</li>
+    <li>git add .</li>
+    <li>git commit -m "initial file"</li>
+    <li>create a repo on github, preferably same name as local-repo name</li>
+    <li>git remote origion main {remote-repo-link}</li>
+    <li>git remote -v</li>
+    <li>git branch</li>
+    <li>git branch -M master "main"</li>
+    <li>git push -u origin main</li>
+  </ul>
+
+  <div>
+    <p>
+      //git version -> also verifies if git is installed or not
+$ git --version
+
+//to enter user name on git
+$ git config --global user.name "Vinay Aggarwal"
+
+//to enter user email on git
+$ git config --global user.email "vinayaggarwal5050@gmail.com"
+
+//check all existing git configurations
+$ git config --list
+
+//cloning the repository (which is on server) to local machine -> download the git
+$ git clone <link of repository>
+$ git clone https://github.com/vinayaggarwal5050/learn-github.git
+
+//to check status of code
+1. first go to cloned repo directory using cd cloned-directory
+
+2. check all files using - also hidden files - it will show a folder .git
+$ ls -a
+
+3. check the stus of cloned repo
+$ git status
+
+4. now if we name changes to files of this directory or add new files and then if check the status
+$ git status
+
+-> it will show modified: README.md & untacked files: "new-file-added.html"
+
+5. there are 5 status: untracked, modified, stages(file is ready to be committed), unmodified
+
+6. when we modify / create a new file, it is untracked by git. 
+
+7. But by using 'add', this files is now in staged condition (that is file is ready to be committed)
+
+//to bring modified and added file in staging condition
+$ git add filename.index
+$ git add readme.md 
+$ git add .
+(git add . will stage all files in one shot)
+
+//to commit the changes
+$ git commit -m "message"
+
+//to push the local repository to server
+$ git push origin main
+
+//_______________________________________________________________________________//
+//creating repo on local machine
+
+$ mkdir local-repo
+$ cd local-repo
+
+//create a git repo
+$ git init
+
+//create files and commit them
+$ git add .   //staging
+$ git commit -m "initial files" //file committed
+$ git status //check status
+
+//create a repository on github and get its link
+
+/................................................../
+//to add {link-name} and {path} in git.remote
+//giving it a name git.remote that git.remote.origin = {our remote repo link}
+$ git remote add {link-name} {path}
+$ git remote add origin https://github.com/vinayaggarwal5050/local-repo.git
+
+//to link name 
+$ git remote remove {link-name}
+
+//to check all remote {link-names}
+$ git remote
+
+//to check the {link} of remote 
+$ git remote -v
+
+/......................................................../
+
+//to check the branch of repo we are working on
+$ git branch
+
+//to change to name of branch
+$ git branch -M {branch-to-be-renamed} "{new-branch-name}"
+$ git branch -M main
+
+/.........................................................../
+
+
+//to push our repo to remote 
+$ git push {link-name} {branch-name}
+$ git push origin main
+
+//to tell git that we are going to push all changes to ./origin/main, use -u (upsteam flag)
+$ git push -u origin main
+
+
+//_______________________________________________________________________________
+//Understanding branches
+
+//to know current branch name
+$ git branch
+
+//to rename the branch name
+$ git branch -M oldBranch "new-branch-name"
+
+//to create new  and move to new branch
+$ git checkout -b "new-branch-name"
+
+//to switch to any another branch
+$ git checkout "exisiting-brach-name"
+$ git checkout {anotherBranch}
+
+//to delete a branch
+$ git branch -d {branch-to-be-deleted}
+
+//to push a new branch 
+$ git push origin {new-branch}
+$ git push origin tester
+
+/____________________________________________________________________/
+//now we have two branches - {on origin file path} ->main &  tester
+
+//to merge branches
+1. way One -> do merges locally and then push
+
+//check the branch ...let's say you are in tester, then use
+
+$ git diff {anotherBranch}
+$ git diff main
+//this is give us the difference in both branches
+
+//to merge
+$ git merge {anotherBranch}
+
+2. way Two
+//using Pull Request on git hub and merge two branch say tester into main after review
+//then download this change to local
+
+git pull origin main
+
+/_____________________________________________________________________________________/
+//Undoing changes
+//1. undoing for staged changes - > git add . has been executed
+$ git reset {fileName}
+$ git reset
+
+
+//2. undoing for committed changes -> git merge -m "message" has been executed
+$ git reset HEAD~1
+
+//3. check the all commits
+$ git log
+
+//4. undoing some particular commit -> check hash from commit and reset that hash
+$ git reset {HASH}
+
+//5. to make this changes from code itself
+$ git commit --hard {hash}
+
+/_______________________________________________________________________
+//FORK
+
+    </p>
+  </div>
+
+
+</body>
+
+</html>
